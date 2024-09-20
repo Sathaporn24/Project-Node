@@ -1,0 +1,50 @@
+<p-card class="md:fixed md:top-50 md:left-50 -translate-xy-50 w-full md:w-8">
+    <ng-template pTemplate="header">
+        <div class="text-center text-2xl pt-3">
+            <span>New Product</span>
+        </div>
+    </ng-template>
+
+    <form [formGroup]="productForm">
+        <div class="formGrid grid">
+            <div class="field col-12">
+                <p-floatLabel>
+                    <input pInputText id="name" type="text" formControlName="name" required class="w-full" />
+                    <label for="name">Name</label>
+                </p-floatLabel>
+                @if (validateControl('name') && hasError('name', 'required')) {
+                <small class="text-red-500 font-italic">Name is required.</small>
+                }
+            </div>
+            <div class="field col-12">
+                <p-floatLabel>
+                    <input pInputText id="price" type="number" formControlName="price" required class="w-full" />
+                    <label for="price">Price</label>
+                </p-floatLabel>
+                @if (validateControl('price') && hasError('price', 'required')) {
+                <small class="text-red-500 font-italic">Price is required.</small>
+                }
+            </div>
+            <div class="field col-12">
+                <p-floatLabel>
+                    <textarea pInputTextarea id="description" rows="3" formControlName="description"
+                        class="w-full"></textarea>
+                    <label for="description">Description</label>
+                </p-floatLabel>
+            </div>
+            <div class="field col-12">
+                <p-fileUpload mode="basic" chooseLabel="Choose" chooseIcon="pi pi-upload" [accept]="accept"
+                    [maxFileSize]="maxFileSize" (onSelect)="selectFile($event)" />
+            </div>
+        </div>
+    </form>
+
+    <ng-template pTemplate="footer">
+        <div class="flex justify-content-center flex-wrap">
+            <button pButton label="Cancel" (click)="back()" [disabled]="isProcessing"
+                class="p-button-secondary"></button>
+            <button pButton label="Create" [disabled]="productForm.invalid" [loading]="isProcessing" class="ml-2"
+                (click)="saveChanges()"></button>
+        </div>
+    </ng-template>
+</p-card>

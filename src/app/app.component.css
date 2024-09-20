@@ -1,0 +1,4 @@
+/* set main's margin to make a content don't show behind the header */
+main {
+    margin: 69.5px 8px 59.5px 8px;
+}

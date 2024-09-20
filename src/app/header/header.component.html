@@ -1,0 +1,20 @@
+<header class="fixed top-0 w-full">
+    <p-menubar [model]="mainMenuItems">
+        <ng-template pTemplate="start">
+            <a routerLink="/home" routerLinkActive="active" ariaCurrentWhenActive="page" class="mr-2"><img
+                    src="favicon.ico" height="32px"></a>
+        </ng-template>
+
+        <ng-template pTemplate="end">
+            @if (isUserAuthenticated) {
+            <div class="flex align-items-stretch flex-wrap">
+                <p-splitButton icon="pi pi-user" [label]="fullName" [model]="userMenuItems" rounded="true"
+                    text="true" />
+            </div>
+            }
+            @else{
+            <p-button label="Log in" icon="pi pi-sign-in" rounded="true" text="true" (onClick)="gotoLogin()" />
+            }
+        </ng-template>
+    </p-menubar>
+</header>

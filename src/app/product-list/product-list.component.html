@@ -1,0 +1,82 @@
+@if (isSeller) {
+<div class="flex justify-content-between flex-wrap mb-2">
+    <button pButton label="New" icon="pi pi-plus" (click)="newProduct()"></button>
+    <div class="flex">
+        <p-checkbox [(ngModel)]="onlyMyItem" [binary]="true" label="Only My Item" (onChange)="valueChange($event)" />
+
+        <div class="ml-2">
+            <p-inputGroup>
+                <input type="text" pInputText placeholder="Keyword" [(ngModel)]="keyword" (keyup)="search($event)" />
+                <button type="button" pButton icon="pi pi-search" class="p-button-warning"
+                    (click)="search($event)"></button>
+            </p-inputGroup>
+        </div>
+    </div>
+</div>
+}
+@else {
+<div class="flex justify-content-end flex-wrap mb-2">
+    <div>
+        <p-inputGroup>
+            <input type="text" pInputText placeholder="Keyword" [(ngModel)]="keyword" (keyup)="search($event)" />
+            <button type="button" pButton icon="pi pi-search" class="p-button-warning"
+                (click)="search($event)"></button>
+        </p-inputGroup>
+    </div>
+</div>
+}
+<p-table #table [columns]="cols" [value]="products" [loading]="loading" responsiveLayout="stack" [breakpoint]="'800px'"
+    [paginator]="true" [first]="first" [rows]="rows" [rowsPerPageOptions]="rowsPerPageOptions"
+    [totalRecords]="totalRecords" [lazy]="true" (onLazyLoad)="getProducts($event)" styleClass="p-datatable-striped">
+    <ng-template pTemplate="header" let-columns>
+        <tr>
+            @for (col of columns; track col.field) {
+            <th>
+                {{ col.header }}
+            </th>
+            }
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-rowData let-columns="columns">
+        <tr>
+            @for (col of columns; track col.field) {
+            <td>
+                <span class="p-column-title font-bold">{{col.header}}</span>
+                @if (col.field === 'actions') {
+                <p-buttonGroup>
+                    <button pButton icon="pi pi-eye" [rounded]="true" [text]="true" pTooltip="View"
+                        (click)="viewItem(rowData)"></button>
+                    @if (onlyMyItem) {
+                    <button pButton icon="pi pi-pencil" [rounded]="true" [text]="true" pTooltip="Edit"
+                        (click)="editItem(rowData)"></button>
+                    <button pButton icon="pi pi-trash" [rounded]="true" [text]="true" pTooltip="Delete"
+                        severity="danger" (click)="deleteItem(rowData)"></button>
+                    }
+                </p-buttonGroup>
+                }
+                @else if (col.field === 'imagePath') {
+                @if (rowData[col.field]) {
+                <img [src]="getImageUrl(rowData[col.field])" height="48px" />
+                }
+                @else {
+                <span>n/a</span>
+                }
+                }
+                @else if (col.field === 'price') {
+                {{ rowData[col.field] | number:'1.2-2' }}
+                }
+                @else {
+                {{ rowData[col.field] }}
+                }
+            </td>
+            }
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="emptymessage">
+        <tr>
+            <td [attr.colspan]="cols.length" class="text-center">
+                Products not found.
+            </td>
+        </tr>
+    </ng-template>
+</p-table>
