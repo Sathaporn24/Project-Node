@@ -50,7 +50,27 @@ export class HeaderComponent implements OnInit {
             routerLink: '/product/new'
           }
         ]
-      }
+      },
+      {
+        label: 'Category',
+        items: [
+          {
+            label: 'All',
+            icon: PrimeIcons.LIST,
+            routerLink: '/category/list'
+          }
+        ]
+      },
+      {
+        label: 'Unit',
+        items: [
+          {
+            label: 'All',
+            icon: PrimeIcons.LIST,
+            routerLink: '/unit/list'
+          }
+        ]
+      },
     ];
 
     this.userMenuItems = [

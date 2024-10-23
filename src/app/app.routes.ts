@@ -12,6 +12,8 @@ import { AccountForgotPasswordComponent } from './account-forgot-password/accoun
 import { AccountResetPasswordComponent } from './account-reset-password/account-reset-password.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { ProductEditComponent } from './product-edit/product-edit.component';
+import { CategoryListComponent } from './category/category-list/category-list.component';
+import { UnitListComponent } from './unit/unit-list/unit-list.component';
 
 export const routes: Routes = [
     {
@@ -45,6 +47,28 @@ export const routes: Routes = [
                 title: 'Edit Product',
                 component: ProductEditComponent,
                 canActivate: [authGuard, sellerGuard]
+            }
+        ]
+    },
+    {
+        path: 'category',
+        children: [
+            {
+                path: 'list',
+                title: 'Category',
+                component: CategoryListComponent,
+                canActivate: [authGuard]
+            }
+        ]
+    },
+    {
+        path: 'unit',
+        children: [
+            {
+                path: 'list',
+                title: 'Unit',
+                component: UnitListComponent,
+                canActivate: [authGuard]
             }
         ]
     },

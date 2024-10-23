@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { BrowserModule } from "@angular/platform-browser";
+
 import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
@@ -6,6 +8,9 @@ import { ToastModule } from 'primeng/toast';
 import { ConfirmationService, MessageService, PrimeNGConfig } from 'primeng/api';
 import { AccountService } from './shared/services/account.service';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
+
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+import { DataTablesModule } from "angular-datatables";
 
 @Component({
   selector: 'app-root',
@@ -15,7 +20,9 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
     HeaderComponent,
     FooterComponent,
     ToastModule,
-    ConfirmDialogModule
+    ConfirmDialogModule,
+    SweetAlert2Module,
+    DataTablesModule,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',

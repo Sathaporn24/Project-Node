@@ -1,0 +1,24 @@
+<div class="category-list-container">
+  <h2>Unit List</h2>
+  <button pButton label="Add Category" icon="pi pi-plus" (click)="addCategory()"></button>
+  
+  <p-table [value]="categories" [paginator]="true" [rows]="10" [rowsPerPageOptions]="[5, 10, 20]">
+    <ng-template pTemplate="header">
+      <tr>
+        <th>Category Name</th>
+        <th></th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-category>
+      <tr>
+        <td>{{ category.cateName }}</td>
+        <td>
+          <button pButton icon="pi pi-pencil" (click)="editCategory(category)" class="p-button-rounded p-button-info"></button>
+          <button pButton icon="pi pi-trash" (click)="deleteCategory(category.id)" class="p-button-rounded p-button-danger"></button>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+
+  <p *ngIf="isSeller" style="color: green;">You have seller permissions.</p>
+</div>
