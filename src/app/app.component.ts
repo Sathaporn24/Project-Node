@@ -19,7 +19,7 @@ import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
     FooterComponent,
     ToastModule,
     ConfirmDialogModule,
-    SweetAlert2Module,
+    SweetAlert2Module
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',

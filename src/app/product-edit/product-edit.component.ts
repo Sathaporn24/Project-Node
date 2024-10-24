@@ -12,6 +12,19 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { environment } from '../../environments/environment.development';
 import { EditProductDto } from '../shared/dtos/edit-product.dto';
 import { FileSelectEvent, FileUploadModule } from 'primeng/fileupload';
+import { DropdownModule } from 'primeng/dropdown';
+import { ItemsUnit, UnitService } from '../shared/services/unit.service';
+import { CategoryService, ItemsCategory } from '../shared/services/category.service';
+
+interface Category {
+  id: number;
+  cateName: string;
+}
+
+interface Unit {
+  id: number;
+  unName: string;
+}
 
 @Component({
   selector: 'app-product-edit',
@@ -23,7 +36,8 @@ import { FileSelectEvent, FileUploadModule } from 'primeng/fileupload';
     InputTextModule,
     InputTextareaModule,
     ButtonModule,
-    FileUploadModule
+    FileUploadModule,
+    DropdownModule
   ],
   templateUrl: './product-edit.component.html',
   styleUrl: './product-edit.component.css'
@@ -34,11 +48,18 @@ export class ProductEditComponent implements OnInit {
   maxFileSize = environment.maxFileSizeForProductImage;
   accept = environment.allowedMimeTypeForProductImage;
 
+  
+  categoryOptions: Category[] = []; 
+  unitOptions: Unit[] = [];    
+
+  
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private productService: ProductService,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private unitService: UnitService,
+    private categoryService: CategoryService,
   ) { }
 
   ngOnInit(): void {
@@ -54,6 +75,26 @@ export class ProductEditComponent implements OnInit {
       price: new FormControl('', [Validators.required]),
       description: new FormControl(''),
       image: new FormControl(''),
+      category: new FormControl('', [Validators.required]), 
+      unit: new FormControl('', [Validators.required])  
+    });
+
+    this.categoryService.getCategoryAll().subscribe({
+      next: (res: any) => {
+       this.categoryOptions = res.data;
+      },
+      error: (err: HttpErrorResponse) => {
+        console.log(err.message);
+      }
+    });
+
+    this.unitService.getUnitAll().subscribe({
+      next: (res: any) => {
+       this.unitOptions = res.data;
+      },
+      error: (err: HttpErrorResponse) => {
+        console.log(err.message);
+      }
     });
 
     this.productService.getProduct(id).subscribe({
@@ -62,6 +103,13 @@ export class ProductEditComponent implements OnInit {
         this.productForm.get('name')?.setValue(res.name);
         this.productForm.get('price')?.setValue(res.price);
         this.productForm.get('description')?.setValue(res.description);
+
+        const selectedCategory = this.categoryOptions.find(category => category.id === res.category);
+        this.productForm.get('category')?.setValue(selectedCategory);
+
+        const selectedUnit = this.unitOptions.find(unit => unit.id === res.unit);
+        this.productForm.get('unit')?.setValue(selectedUnit);
+
       },
       error: (err: HttpErrorResponse) => {
         if (!environment.production) console.log(err);
@@ -69,6 +117,8 @@ export class ProductEditComponent implements OnInit {
         this.warnProductNotFound();
       }
     });
+
+  
   }
 
   private warnProductNotFound() {
@@ -92,12 +142,16 @@ export class ProductEditComponent implements OnInit {
   }
 
   saveChanges() {
+    const newcategory = this.productForm.get('category')?.value as ItemsCategory;
+    const newUnit = this.productForm.get('unit')?.value as ItemsUnit;
     const id = this.productForm.get('id')?.value;
     const req: EditProductDto = {
       name: this.productForm.get('name')?.value,
       price: this.productForm.get('price')?.value,
       description: this.productForm.get('description')?.value,
       image: this.productForm.get('image')?.value,
+      category: newcategory.id,
+      unit: newUnit.id,
     };
 
     this.isProcessing = true;

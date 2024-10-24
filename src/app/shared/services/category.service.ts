@@ -8,6 +8,14 @@ export interface ItemsCategory{
     cateName: string
 }
 
+interface ReqCategory{
+  data : {
+    id: number;
+    cateName:string;
+  }
+}
+
+
 @Injectable({
   providedIn: 'root'
 })
@@ -17,6 +25,11 @@ export class CategoryService {
   getCategoryAll(): Observable<ItemsCategory[]> {
     const url = `${environment.apiBaseUrl}/Category`;
     return this.http.get<ItemsCategory[]>(url);
+  }
+
+  idCategory(id: number): Observable<ReqCategory> {
+    const url = `${environment.apiBaseUrl}/Category/${id}`;
+    return this.http.get<ReqCategory>(url);
   }
 
   addCategory(categoryName: string): Observable<ItemsCategory> {

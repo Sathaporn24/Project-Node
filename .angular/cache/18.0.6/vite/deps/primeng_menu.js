@@ -3,11 +3,6 @@ import {
   TooltipModule
 } from "./chunk-IPLIMIQ7.js";
 import {
-  RouterLink,
-  RouterLinkActive,
-  RouterModule
-} from "./chunk-FE32KIM5.js";
-import {
   animate,
   style,
   transition,
@@ -22,10 +17,6 @@ import {
   DomHandler
 } from "./chunk-JZQAVOZS.js";
 import {
-  DomSanitizer
-} from "./chunk-7DT3DIM7.js";
-import "./chunk-MIK43VZL.js";
-import {
   OverlayService,
   PrimeNGConfig,
   PrimeTemplate,
@@ -33,6 +24,15 @@ import {
   UniqueComponentId,
   zindexutils
 } from "./chunk-T56YIVMT.js";
+import {
+  RouterLink,
+  RouterLinkActive,
+  RouterModule
+} from "./chunk-FE32KIM5.js";
+import {
+  DomSanitizer
+} from "./chunk-7DT3DIM7.js";
+import "./chunk-MIK43VZL.js";
 import {
   CommonModule,
   DOCUMENT,

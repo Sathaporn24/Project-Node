@@ -3,4 +3,6 @@ export interface EditProductDto {
     price: number;
     description: string;
     image: File;
+    category: number,
+    unit: number
 }

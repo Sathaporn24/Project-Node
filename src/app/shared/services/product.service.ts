@@ -36,6 +36,10 @@ export class ProductService {
     if (req.description) {
       formData.append('description', req.description);
     }
+
+    formData.append('category', req.category.toString());
+    formData.append('unit', req.unit.toString());
+
     if (req.image) {
       formData.append('image', req.image, req.image.name);
     }
@@ -50,6 +54,10 @@ export class ProductService {
     if (req.description) {
       formData.append('description', req.description);
     }
+
+    formData.append('category', req.category.toString());
+    formData.append('unit', req.unit.toString());
+    
     if (req.image) {
       formData.append('image', req.image, req.image.name);
     }

@@ -13,6 +13,7 @@ import { AccountService } from '../../shared/services/account.service';
 import Swal from 'sweetalert2';
 
 import { UnitService, ItemsUnit } from '../../shared/services/unit.service';
+import { CardModule } from 'primeng/card';
 
 @Component({
   selector: 'app-unit-list',
@@ -25,7 +26,8 @@ import { UnitService, ItemsUnit } from '../../shared/services/unit.service';
     ButtonGroupModule,
     TooltipModule,
     CheckboxModule,
-    InputGroupModule
+    InputGroupModule,
+    CardModule
   ],
   templateUrl: './unit-list.component.html',
   styleUrl: './unit-list.component.css',

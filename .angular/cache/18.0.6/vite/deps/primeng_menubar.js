@@ -9,11 +9,6 @@ import {
   TooltipModule
 } from "./chunk-IPLIMIQ7.js";
 import {
-  RouterLink,
-  RouterLinkActive,
-  RouterModule
-} from "./chunk-FE32KIM5.js";
-import {
   Ripple,
   RippleModule
 } from "./chunk-VDOUM4JE.js";
@@ -23,8 +18,6 @@ import {
 import {
   DomHandler
 } from "./chunk-JZQAVOZS.js";
-import "./chunk-7DT3DIM7.js";
-import "./chunk-MIK43VZL.js";
 import {
   ObjectUtils,
   PrimeNGConfig,
@@ -33,6 +26,13 @@ import {
   UniqueComponentId,
   zindexutils
 } from "./chunk-T56YIVMT.js";
+import {
+  RouterLink,
+  RouterLinkActive,
+  RouterModule
+} from "./chunk-FE32KIM5.js";
+import "./chunk-7DT3DIM7.js";
+import "./chunk-MIK43VZL.js";
 import {
   CommonModule,
   DOCUMENT,

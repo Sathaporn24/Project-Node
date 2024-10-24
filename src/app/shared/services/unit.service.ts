@@ -8,6 +8,13 @@ export interface ItemsUnit{
     unName: string
 }
 
+interface ReqUnit{
+  data : {
+    id: number;
+    unName:string;
+  }
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -18,6 +25,11 @@ export class UnitService {
   getUnitAll(): Observable<ItemsUnit[]> {
     const url = `${environment.apiBaseUrl}/Unit`;
     return this.http.get<ItemsUnit[]>(url);
+  }
+
+  idUnit(id: number): Observable<ReqUnit> {
+    const url = `${environment.apiBaseUrl}/Unit/${id}`;
+    return this.http.get<ReqUnit>(url);
   }
 
   addUnit(unitName: string): Observable<ItemsUnit> {
