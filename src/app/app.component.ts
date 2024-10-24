@@ -8,9 +8,7 @@ import { ToastModule } from 'primeng/toast';
 import { ConfirmationService, MessageService, PrimeNGConfig } from 'primeng/api';
 import { AccountService } from './shared/services/account.service';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
-
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
-import { DataTablesModule } from "angular-datatables";
 
 @Component({
   selector: 'app-root',
@@ -22,7 +20,6 @@ import { DataTablesModule } from "angular-datatables";
     ToastModule,
     ConfirmDialogModule,
     SweetAlert2Module,
-    DataTablesModule,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',

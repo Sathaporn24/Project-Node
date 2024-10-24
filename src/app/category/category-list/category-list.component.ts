@@ -13,9 +13,6 @@ import { AccountService } from '../../shared/services/account.service';
 import Swal from 'sweetalert2';
 import { CategoryService, ItemsCategory } from '../../shared/services/category.service';
 
-import { Config } from 'datatables.net';
-import { ProductService } from '../../shared/services/product.service';
-
 @Component({
   selector: 'app-category-list',
   standalone: true,

@@ -8,6 +8,12 @@ import {
 } from "./chunk-HRXQGPFS.js";
 import "./chunk-JZQAVOZS.js";
 import {
+  ObjectUtils,
+  PrimeNGConfig,
+  PrimeTemplate,
+  SharedModule
+} from "./chunk-T56YIVMT.js";
+import {
   NG_VALUE_ACCESSOR,
   NgControl
 } from "./chunk-FKYM625B.js";
@@ -18,12 +24,6 @@ import {
   NgStyle,
   NgTemplateOutlet
 } from "./chunk-62KCDTIT.js";
-import {
-  ObjectUtils,
-  PrimeNGConfig,
-  PrimeTemplate,
-  SharedModule
-} from "./chunk-T56YIVMT.js";
 import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,

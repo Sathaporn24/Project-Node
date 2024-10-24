@@ -11,7 +11,8 @@ import { FormsModule } from '@angular/forms';
 import { InputGroupModule } from 'primeng/inputgroup';
 import { AccountService } from '../../shared/services/account.service';
 import Swal from 'sweetalert2';
-import { CategoryService, ItemsCategory } from '../../shared/services/category.service';
+
+import { UnitService, ItemsUnit } from '../../shared/services/unit.service';
 
 @Component({
   selector: 'app-unit-list',
@@ -32,24 +33,24 @@ import { CategoryService, ItemsCategory } from '../../shared/services/category.s
 })
 
 export class UnitListComponent implements OnInit {
-  categories: ItemsCategory[] = [];
+  units: ItemsUnit[] = [];
   isSeller = false;
   constructor(
     private cdr: ChangeDetectorRef,
     private accountService: AccountService,
-    private categoryService: CategoryService,
+    private unitService: UnitService,
   ) {
   }
 
   async ngOnInit(): Promise<void> {
     this.isSeller = this.accountService.isUserInRole('Seller');
-    await this.getCategory();
+    await this.getUnit();
   }
 
-  async getCategory(){
-    this.categoryService.getCategoryAll().subscribe({
+  async getUnit(){
+    this.unitService.getUnitAll().subscribe({
       next: (res: any) => {
-       this.categories = res.data;
+       this.units = res.data;
        this.cdr.markForCheck();
       },
       error: (err: HttpErrorResponse) => {
@@ -58,12 +59,12 @@ export class UnitListComponent implements OnInit {
     });
   }
 
-  async addCategory(){
+  async addUnit(){
     const { value: userInput } = await Swal.fire({
-      title: 'Category name',
+      title: 'Unit name',
       input: 'text',
-      inputLabel: 'Name Category',
-      inputPlaceholder: 'Enter your Category here',
+      inputLabel: 'Name Unit',
+      inputPlaceholder: 'Enter your Unit here',
       showCancelButton: true,
       inputValidator: (value) => {
         if (!value) {
@@ -74,24 +75,24 @@ export class UnitListComponent implements OnInit {
     });
 
     if(userInput){
-      this.categoryService.addCategory(userInput).subscribe({
-        next: async (newCategory) => {
-          await this.getCategory();
-          Swal.fire('Success!', 'Category added successfully!', 'success');
+      this.unitService.addUnit(userInput).subscribe({
+        next: async (newUnit) => {
+          await this.getUnit();
+          Swal.fire('Success!', 'Unit added successfully!', 'success');
         },
         error: (err: HttpErrorResponse) => {
-          Swal.fire('Error!', 'Failed to add category. Please try again.', 'error');
+          Swal.fire('Error!', 'Failed to add Unit. Please try again.', 'error');
         }
       });
     }
   }
 
-  editCategory(category: ItemsCategory) {
+  editUnit(Unit: ItemsUnit) {
     Swal.fire({
-      title: 'Edit Category Name',
+      title: 'Edit Unit Name',
       input: 'text',
-      inputLabel: 'Update Category Name',
-      inputValue: category.cateName, 
+      inputLabel: 'Update Unit Name',
+      inputValue: Unit.unName, 
       showCancelButton: true,
       inputValidator: (value) => {
         if (!value) {
@@ -101,20 +102,20 @@ export class UnitListComponent implements OnInit {
       }
     }).then((result) => {
       if (result.isConfirmed) {
-        this.categoryService.editCategory(category.id, result.value).subscribe({
+        this.unitService.editUnit(Unit.id, result.value).subscribe({
           next: async () => {
-            await this.getCategory();
-            Swal.fire('Success!', 'Category update successfully!', 'success');
+            await this.getUnit();
+            Swal.fire('Success!', 'Unit update successfully!', 'success');
           },
           error: (err: HttpErrorResponse) => {
-            Swal.fire('Error!', 'Failed to add category. Please try again.', 'error');
+            Swal.fire('Error!', 'Failed to add Unit. Please try again.', 'error');
           }
         });
       }
     });
   }
 
-  deleteCategory(id: number) {
+  deleteUnit(id: number) {
     Swal.fire({
       title: 'Are you sure?',
       text: "You won't be able to revert this!",
@@ -124,13 +125,13 @@ export class UnitListComponent implements OnInit {
       cancelButtonText: 'No, cancel!',
     }).then((result) => {
       if (result.isConfirmed) {
-        this.categoryService.delCategory(id).subscribe({
+        this.unitService.delUnit(id).subscribe({
           next: async () => {
-            await this.getCategory();
-            Swal.fire('Deleted!', 'Your category has been deleted.', 'success');
+            await this.getUnit();
+            Swal.fire('Deleted!', 'Your Unit has been deleted.', 'success');
           },
           error: (err: HttpErrorResponse) => {
-            Swal.fire('Error!', 'Failed to add category. Please try again.', 'error');
+            Swal.fire('Error!', 'Failed to add Unit. Please try again.', 'error');
           }
         });
       }

@@ -19,11 +19,11 @@ import {
   Button,
   ButtonDirective,
   ButtonModule
-} from "./chunk-NUA5M5UP.js";
+} from "./chunk-KYTTNIHM.js";
 import {
   Ripple,
   RippleModule
-} from "./chunk-JVJ7Q54V.js";
+} from "./chunk-VDOUM4JE.js";
 import {
   CheckIcon
 } from "./chunk-LCPN7SMS.js";
@@ -42,6 +42,14 @@ import {
   HttpEventType
 } from "./chunk-MIK43VZL.js";
 import {
+  MessageService,
+  PrimeNGConfig,
+  PrimeTemplate,
+  SharedModule,
+  TranslationKeys,
+  UniqueComponentId
+} from "./chunk-T56YIVMT.js";
+import {
   CommonModule,
   DOCUMENT,
   NgClass,
@@ -51,14 +59,6 @@ import {
   NgTemplateOutlet,
   isPlatformBrowser
 } from "./chunk-62KCDTIT.js";
-import {
-  MessageService,
-  PrimeNGConfig,
-  PrimeTemplate,
-  SharedModule,
-  TranslationKeys,
-  UniqueComponentId
-} from "./chunk-T56YIVMT.js";
 import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,

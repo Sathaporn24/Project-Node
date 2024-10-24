@@ -4,6 +4,9 @@ import {
 } from "./chunk-HRXQGPFS.js";
 import "./chunk-JZQAVOZS.js";
 import {
+  PrimeNGConfig
+} from "./chunk-T56YIVMT.js";
+import {
   NG_VALUE_ACCESSOR,
   NgControl
 } from "./chunk-FKYM625B.js";
@@ -13,9 +16,6 @@ import {
   NgIf,
   NgStyle
 } from "./chunk-62KCDTIT.js";
-import {
-  PrimeNGConfig
-} from "./chunk-T56YIVMT.js";
 import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,

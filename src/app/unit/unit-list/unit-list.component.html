@@ -1,20 +1,20 @@
-<div class="category-list-container">
+<div class="unit-list-container">
   <h2>Unit List</h2>
-  <button pButton label="Add Category" icon="pi pi-plus" (click)="addCategory()"></button>
+  <button pButton label="Add Unit" icon="pi pi-plus" (click)="addUnit()"></button>
   
-  <p-table [value]="categories" [paginator]="true" [rows]="10" [rowsPerPageOptions]="[5, 10, 20]">
+  <p-table [value]="units" [paginator]="true" [rows]="10" [rowsPerPageOptions]="[5, 10, 20]">
     <ng-template pTemplate="header">
       <tr>
-        <th>Category Name</th>
+        <th>Unit Name</th>
         <th></th>
       </tr>
     </ng-template>
-    <ng-template pTemplate="body" let-category>
+    <ng-template pTemplate="body" let-unit>
       <tr>
-        <td>{{ category.cateName }}</td>
+        <td>{{ unit.unName }}</td>
         <td>
-          <button pButton icon="pi pi-pencil" (click)="editCategory(category)" class="p-button-rounded p-button-info"></button>
-          <button pButton icon="pi pi-trash" (click)="deleteCategory(category.id)" class="p-button-rounded p-button-danger"></button>
+          <button pButton icon="pi pi-pencil" (click)="editUnit(unit)" class="p-button-rounded p-button-info"></button>
+          <button pButton icon="pi pi-trash" (click)="deleteUnit(unit.id)" class="p-button-rounded p-button-danger"></button>
         </td>
       </tr>
     </ng-template>
