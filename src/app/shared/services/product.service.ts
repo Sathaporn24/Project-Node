@@ -24,6 +24,22 @@ export class ProductService {
     return this.http.get<PagingDto<ProductDto>>(reqUrl);
   }
 
+  allProduct() {
+    let reqUrl = environment.apiBaseUrl + '/Products/All';
+    return this.http.get<any>(reqUrl);
+  }
+
+  searchProduct(searchProduct: string) {
+    let reqUrl = environment.apiBaseUrl + `/Products/Search?ProductName=${searchProduct}`;
+    return this.http.get<any>(reqUrl);
+  }
+
+  detailProduct(id: string) {
+    let reqUrl = environment.apiBaseUrl + `/Products/Detail?id=${id}`;
+    return this.http.get<any>(reqUrl);
+  }
+  
+
   getProduct(id: string) {
     let reqUrl = environment.apiBaseUrl + '/products/' + id;
     return this.http.get<ProductDetailDTO>(reqUrl);

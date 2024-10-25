@@ -14,6 +14,7 @@ import { ProductDetailComponent } from './product-detail/product-detail.componen
 import { ProductEditComponent } from './product-edit/product-edit.component';
 import { CategoryListComponent } from './category/category-list/category-list.component';
 import { UnitListComponent } from './unit/unit-list/unit-list.component';
+import { FavoritesListComponent } from './favorites/favorites-list.component';
 
 export const routes: Routes = [
     {
@@ -68,6 +69,17 @@ export const routes: Routes = [
                 path: 'list',
                 title: 'Unit',
                 component: UnitListComponent,
+                canActivate: [authGuard]
+            }
+        ]
+    },
+    {
+        path: 'favorites',
+        children: [
+            {
+                path: 'list',
+                title: 'Favorites',
+                component: FavoritesListComponent,
                 canActivate: [authGuard]
             }
         ]

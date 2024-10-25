@@ -1,0 +1,22 @@
+<div class="category-list-container">
+  <h2>Favorites List</h2>
+
+  <p-table [value]="favorites" [paginator]="true" [rows]="10" [rowsPerPageOptions]="[5, 10, 20]">
+    <ng-template pTemplate="header">
+      <tr>
+        <th>Product Name</th>
+        <th></th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-favorites>
+      <tr>
+        <td>{{favorites.productName}}</td>
+        <td>
+          <button pButton icon="pi pi-box" (click)="getDetailProduct(favorites.productId)" class="p-button-rounded p-button-info"></button>
+          <button pButton icon="pi pi-trash" (click)="deleteFavorites(favorites.favoriteId)" class="p-button-rounded p-button-danger"></button>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+
+</div>

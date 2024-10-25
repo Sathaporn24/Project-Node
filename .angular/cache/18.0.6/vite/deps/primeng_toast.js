@@ -7,6 +7,9 @@ import {
   TimesIcon
 } from "./chunk-ANXJHNL3.js";
 import {
+  CheckIcon
+} from "./chunk-LCPN7SMS.js";
+import {
   animate,
   animateChild,
   query,
@@ -18,23 +21,11 @@ import {
 import {
   Ripple,
   RippleModule
-} from "./chunk-VDOUM4JE.js";
-import {
-  CheckIcon
-} from "./chunk-LCPN7SMS.js";
+} from "./chunk-JVJ7Q54V.js";
 import "./chunk-M7T5IX2Q.js";
 import {
   DomHandler
 } from "./chunk-JZQAVOZS.js";
-import {
-  MessageService,
-  ObjectUtils,
-  PrimeNGConfig,
-  PrimeTemplate,
-  SharedModule,
-  UniqueComponentId,
-  zindexutils
-} from "./chunk-T56YIVMT.js";
 import {
   CommonModule,
   DOCUMENT,
@@ -44,6 +35,15 @@ import {
   NgStyle,
   NgTemplateOutlet
 } from "./chunk-62KCDTIT.js";
+import {
+  MessageService,
+  ObjectUtils,
+  PrimeNGConfig,
+  PrimeTemplate,
+  SharedModule,
+  UniqueComponentId,
+  zindexutils
+} from "./chunk-T56YIVMT.js";
 import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,

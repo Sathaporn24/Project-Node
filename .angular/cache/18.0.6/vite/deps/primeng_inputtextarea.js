@@ -1,13 +1,13 @@
 import {
-  PrimeNGConfig
-} from "./chunk-T56YIVMT.js";
-import {
   NgControl,
   NgModel
 } from "./chunk-FKYM625B.js";
 import {
   CommonModule
 } from "./chunk-62KCDTIT.js";
+import {
+  PrimeNGConfig
+} from "./chunk-T56YIVMT.js";
 import {
   ChangeDetectorRef,
   Directive,

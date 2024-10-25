@@ -8,12 +8,12 @@ import {
   trigger
 } from "./chunk-Y43COZLR.js";
 import {
+  BaseIcon
+} from "./chunk-M7T5IX2Q.js";
+import {
   AutoFocus,
   AutoFocusModule
 } from "./chunk-HRXQGPFS.js";
-import {
-  BaseIcon
-} from "./chunk-M7T5IX2Q.js";
 import {
   ConnectedOverlayScrollHandler,
   DomHandler
@@ -21,16 +21,7 @@ import {
 import {
   InputText,
   InputTextModule
-} from "./chunk-T2YAQ3TH.js";
-import {
-  OverlayService,
-  PrimeNGConfig,
-  PrimeTemplate,
-  SharedModule,
-  TranslationKeys,
-  UniqueComponentId,
-  zindexutils
-} from "./chunk-T56YIVMT.js";
+} from "./chunk-X7ZXSBAC.js";
 import {
   NG_VALUE_ACCESSOR
 } from "./chunk-FKYM625B.js";
@@ -43,6 +34,15 @@ import {
   NgTemplateOutlet,
   isPlatformBrowser
 } from "./chunk-62KCDTIT.js";
+import {
+  OverlayService,
+  PrimeNGConfig,
+  PrimeTemplate,
+  SharedModule,
+  TranslationKeys,
+  UniqueComponentId,
+  zindexutils
+} from "./chunk-T56YIVMT.js";
 import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,

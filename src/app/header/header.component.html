@@ -8,8 +8,7 @@
         <ng-template pTemplate="end">
             @if (isUserAuthenticated) {
             <div class="flex align-items-stretch flex-wrap">
-                <p-splitButton icon="pi pi-user" [label]="fullName" [model]="userMenuItems" rounded="true"
-                    text="true" />
+                <p-splitButton icon="pi pi-user" [label]="fullName" [model]="userMenuItems" rounded="true" text="true" (onClick)="viewProfile()" />
             </div>
             }
             @else{

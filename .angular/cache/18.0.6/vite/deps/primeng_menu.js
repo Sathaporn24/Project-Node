@@ -1,7 +1,12 @@
 import {
+  RouterLink,
+  RouterLinkActive,
+  RouterModule
+} from "./chunk-FE32KIM5.js";
+import {
   Tooltip,
   TooltipModule
-} from "./chunk-IPLIMIQ7.js";
+} from "./chunk-XILN3L4O.js";
 import {
   animate,
   style,
@@ -11,24 +16,11 @@ import {
 import {
   Ripple,
   RippleModule
-} from "./chunk-VDOUM4JE.js";
+} from "./chunk-JVJ7Q54V.js";
 import {
   ConnectedOverlayScrollHandler,
   DomHandler
 } from "./chunk-JZQAVOZS.js";
-import {
-  OverlayService,
-  PrimeNGConfig,
-  PrimeTemplate,
-  SharedModule,
-  UniqueComponentId,
-  zindexutils
-} from "./chunk-T56YIVMT.js";
-import {
-  RouterLink,
-  RouterLinkActive,
-  RouterModule
-} from "./chunk-FE32KIM5.js";
 import {
   DomSanitizer
 } from "./chunk-7DT3DIM7.js";
@@ -43,6 +35,14 @@ import {
   NgTemplateOutlet,
   isPlatformBrowser
 } from "./chunk-62KCDTIT.js";
+import {
+  OverlayService,
+  PrimeNGConfig,
+  PrimeTemplate,
+  SharedModule,
+  UniqueComponentId,
+  zindexutils
+} from "./chunk-T56YIVMT.js";
 import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,

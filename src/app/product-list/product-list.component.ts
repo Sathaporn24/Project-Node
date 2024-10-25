@@ -65,7 +65,9 @@ export class ProductListComponent implements OnInit {
       { field: 'actions', header: 'Actions' },
     ];
 
+
     this.isSeller = this.accountService.isUserInRole('Seller');
+    console.log(this.isSeller)
   }
 
   getProducts(e: LazyLoadMeta) {

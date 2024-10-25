@@ -60,6 +60,38 @@ export class AccountService {
     return this.http.post<unknown>(reqUrl, request);
   }
 
+  saveFullProfile(address: { FullAddress: string; District: string; Amphoe: string; Province: string; ZipCode: string; }) {
+    const token = localStorage.getItem(authKey.accessToken);
+    if (!token) {
+      throw new Error("Token not found");
+    }
+    
+    const decodeToken = this.jwtHelperService.decodeToken(token)['sub'];
+    const newValue = { ...address, Id: decodeToken };
+    const reqUrl = environment.apiBaseUrl + '/Profile/CreateProfile';
+    return this.http.post<unknown>(reqUrl, newValue);
+  }
+  
+  getFullProfile(){
+    const token = localStorage.getItem(authKey.accessToken);
+    if (!token) {
+      throw new Error("Token not found");
+    }
+    const decodeToken = this.jwtHelperService.decodeToken(token)['sub'];
+    const reqUrl = environment.apiBaseUrl + `/Profile/${decodeToken}`;
+    return this.http.get<any>(reqUrl);
+  }
+
+  updateFullProfile(address: { FullAddress: string; District: string; Amphoe: string; Province: string; ZipCode: string; }) {
+    const token = localStorage.getItem(authKey.accessToken);
+    if (!token) {
+      throw new Error("Token not found");
+    }
+    const decodeToken = this.jwtHelperService.decodeToken(token)['sub'];
+    const reqUrl = environment.apiBaseUrl + `/Profile/UpdateProfile/${decodeToken}`;
+    return this.http.put<any>(reqUrl, address);
+  }
+
   notifyAuthChange(isAuthenticated: boolean) {
     this.authChangeSub.next(isAuthenticated);
   }
@@ -118,4 +150,5 @@ export class AccountService {
     return 'n/a';
   }
 
+  
 }

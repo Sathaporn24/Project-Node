@@ -1,0 +1,6 @@
+.fixed {
+    position: relative; 
+    max-height: 80vh; 
+    overflow-x: hidden; 
+    
+}
