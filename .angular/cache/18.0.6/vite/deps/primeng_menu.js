@@ -1,9 +1,4 @@
 import {
-  RouterLink,
-  RouterLinkActive,
-  RouterModule
-} from "./chunk-FE32KIM5.js";
-import {
   Tooltip,
   TooltipModule
 } from "./chunk-XILN3L4O.js";
@@ -21,6 +16,11 @@ import {
   ConnectedOverlayScrollHandler,
   DomHandler
 } from "./chunk-JZQAVOZS.js";
+import {
+  RouterLink,
+  RouterLinkActive,
+  RouterModule
+} from "./chunk-FE32KIM5.js";
 import {
   DomSanitizer
 } from "./chunk-7DT3DIM7.js";

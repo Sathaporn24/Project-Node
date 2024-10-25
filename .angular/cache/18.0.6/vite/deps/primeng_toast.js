@@ -7,9 +7,6 @@ import {
   TimesIcon
 } from "./chunk-ANXJHNL3.js";
 import {
-  CheckIcon
-} from "./chunk-LCPN7SMS.js";
-import {
   animate,
   animateChild,
   query,
@@ -18,6 +15,9 @@ import {
   transition,
   trigger
 } from "./chunk-Y43COZLR.js";
+import {
+  CheckIcon
+} from "./chunk-LCPN7SMS.js";
 import {
   Ripple,
   RippleModule
