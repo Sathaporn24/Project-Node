@@ -24,10 +24,70 @@ import Swal from 'sweetalert2';
 })
 export class HeaderComponent implements OnInit {
   isUserAuthenticated = false;
-  mainMenuItems!: MenuItem[];
+
+  mainMenuViews: MenuItem[] = [
+    {
+      label: 'Home',
+      routerLink: '/'
+    }
+  ];
+
+  mainMenuItems: MenuItem[] = [
+    {
+      label: 'Home',
+      routerLink: '/'
+    },
+    {
+      label: 'Product',
+      items: [
+        {
+          label: 'All',
+          icon: PrimeIcons.LIST,
+          routerLink: '/product/list'
+        },
+        {
+          label: 'New',
+          icon: PrimeIcons.PLUS,
+          routerLink: '/product/new'
+        }
+      ]
+    },
+    {
+      label: 'Category',
+      items: [
+        {
+          label: 'All',
+          icon: PrimeIcons.LIST,
+          routerLink: '/category/list'
+        }
+      ]
+    },
+    {
+      label: 'Unit',
+      items: [
+        {
+          label: 'All',
+          icon: PrimeIcons.LIST,
+          routerLink: '/unit/list'
+        }
+      ]
+    },
+    {
+      label: 'Favorites',
+      items: [
+        {
+          label: 'All',
+          icon: PrimeIcons.LIST,
+          routerLink: '/favorites/list'
+        }
+      ]
+    },
+  ];
+
   userMenuItems!: MenuItem[];
   fullName = '';
   isUpdate!: boolean;
+  isLogin!: boolean;
   
   constructor(private router: Router, private route: ActivatedRoute, private accountService: AccountService, private confirmService: ConfirmationService) {
     accountService.authChanged.subscribe(res => {
@@ -36,54 +96,9 @@ export class HeaderComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {
-    this.mainMenuItems = [
-      {
-        label: 'Product',
-        items: [
-          {
-            label: 'All',
-            icon: PrimeIcons.LIST,
-            routerLink: '/product/list'
-          },
-          {
-            label: 'New',
-            icon: PrimeIcons.PLUS,
-            routerLink: '/product/new'
-          }
-        ]
-      },
-      {
-        label: 'Category',
-        items: [
-          {
-            label: 'All',
-            icon: PrimeIcons.LIST,
-            routerLink: '/category/list'
-          }
-        ]
-      },
-      {
-        label: 'Unit',
-        items: [
-          {
-            label: 'All',
-            icon: PrimeIcons.LIST,
-            routerLink: '/unit/list'
-          }
-        ]
-      },
-      {
-        label: 'Favorites',
-        items: [
-          {
-            label: 'All',
-            icon: PrimeIcons.LIST,
-            routerLink: '/favorites/list'
-          }
-        ]
-      },
-    ];
+  async ngOnInit(): Promise<void> {
+
+    this.isLogin = await this.accountService.isUserAuthenticated();
 
     this.userMenuItems = [
       {
@@ -177,13 +192,19 @@ export class HeaderComponent implements OnInit {
       accept: () => {
         this.accountService.logout().subscribe({
           next: (_) => {
-            this.logoutUser();
+            this.router.navigate(['/']).then(() => {
+              this.logoutUser();
+              window.location.reload();
+           });
           },
           error: (err: HttpErrorResponse) => {
             if (!environment.production) {
               console.log(err);
             }
-            this.logoutUser();
+            this.router.navigate(['/']).then(() => {
+              this.logoutUser();
+              window.location.reload();
+           });
           }
         });
       }

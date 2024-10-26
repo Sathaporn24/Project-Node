@@ -1,6 +1,6 @@
 export const environment = {
     production: false,
-    appName: '[DEV] Demo Web App',
+    appName: 'CabkaewShop : online',
     apiBaseUrl: 'https://localhost:5001',
     allowedDomains: ['localhost:5001'],
     maxFileSizeForProductImage: 1048576,

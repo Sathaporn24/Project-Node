@@ -79,9 +79,10 @@ export class AccountLoginUserComponent implements OnInit {
           summary: 'Login Succeeded',
           detail: 'Nice to see you.'
         });
-        setTimeout(() => {
-          this.router.navigate([this.returnUrl]);
-        }, 1500);
+
+        this.router.navigate(['/home']).then(() => {
+          window.location.reload();
+       });
       },
       error: (err: HttpErrorResponse) => {
         this.messageService.add({
