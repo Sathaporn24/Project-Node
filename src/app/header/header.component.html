@@ -1,6 +1,27 @@
 <header class="fixed top-0 w-full">
 
     @if (isLogin) {
+
+        @if(isCustomer){
+            <p-menubar [model]="mainMenuCs">
+                <ng-template pTemplate="start">
+                    <a routerLink="/home" routerLinkActive="active" ariaCurrentWhenActive="page" class="mr-2"><img
+                            src="shop.png" height="40px"></a>
+                </ng-template>
+        
+                <ng-template pTemplate="end">
+                    @if (isUserAuthenticated) {
+                    <div class="flex align-items-stretch flex-wrap">
+                        <p-splitButton icon="pi pi-user" [label]="fullName" [model]="userMenuItems" rounded="true" text="true" (onClick)="viewProfile()" />
+                    </div>
+                    }
+                    @else{
+                    <p-button label="Log in" icon="pi pi-sign-in" rounded="true" text="true" (onClick)="gotoLogin()" />
+                    }
+                </ng-template>
+            </p-menubar>
+        }
+        @else{
         <p-menubar [model]="mainMenuItems">
             <ng-template pTemplate="start">
                 <a routerLink="/home" routerLinkActive="active" ariaCurrentWhenActive="page" class="mr-2"><img
@@ -18,6 +39,7 @@
                 }
             </ng-template>
         </p-menubar>
+        }
     } @else {
         <p-menubar [model]="mainMenuViews">
             <ng-template pTemplate="start">

@@ -1,4 +1,5 @@
 
+@if (isSeller) {
 <div class="unit-list-container">
   <h2>Unit List</h2>
   <button pButton label="Add Unit" icon="pi pi-plus" (click)="addUnit()"></button>
@@ -23,4 +24,5 @@
 
   <p *ngIf="isSeller" style="color: green;">You have seller permissions.</p>
 </div>
+}
 

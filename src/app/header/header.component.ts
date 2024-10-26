@@ -32,6 +32,23 @@ export class HeaderComponent implements OnInit {
     }
   ];
 
+  mainMenuCs: MenuItem[] = [
+    {
+      label: 'Home',
+      routerLink: '/'
+    },
+    {
+      label: 'Favorites',
+      items: [
+        {
+          label: 'All',
+          icon: PrimeIcons.LIST,
+          routerLink: '/favorites/list'
+        }
+      ]
+    },
+  ];
+
   mainMenuItems: MenuItem[] = [
     {
       label: 'Home',
@@ -88,6 +105,7 @@ export class HeaderComponent implements OnInit {
   fullName = '';
   isUpdate!: boolean;
   isLogin!: boolean;
+  isCustomer!: boolean;
   
   constructor(private router: Router, private route: ActivatedRoute, private accountService: AccountService, private confirmService: ConfirmationService) {
     accountService.authChanged.subscribe(res => {
@@ -99,6 +117,7 @@ export class HeaderComponent implements OnInit {
   async ngOnInit(): Promise<void> {
 
     this.isLogin = await this.accountService.isUserAuthenticated();
+    this.isCustomer = await this.accountService.isUserInRole("Customer");
 
     this.userMenuItems = [
       {

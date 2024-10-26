@@ -1,3 +1,4 @@
+ @if(isSeller) {
 <div class="category-list-container">
   <h2>Category List</h2>
   <button pButton label="Add Category" icon="pi pi-plus" (click)="addCategory()"></button>
@@ -22,3 +23,4 @@
 
   <p *ngIf="isSeller" style="color: green;">You have seller permissions.</p>
 </div>
+}
