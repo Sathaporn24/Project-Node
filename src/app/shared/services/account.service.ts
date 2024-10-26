@@ -43,8 +43,8 @@ export class AccountService {
   refresh() {
     let reqUrl = environment.apiBaseUrl + '/accounts/token/refresh';
     const req: RefreshTokenDto = {
-      accessToken: localStorage.getItem(authKey.accessToken)!,
-      refreshToken: localStorage.getItem(authKey.refreshToken)!
+      accessToken: localStorage.getItem(authKey.accessToken)!, //10 min
+      refreshToken: localStorage.getItem(authKey.refreshToken)! 
     };
 
     return this.http.post<TokenResultDto>(reqUrl, req);

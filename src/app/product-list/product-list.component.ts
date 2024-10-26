@@ -37,7 +37,7 @@ export class ProductListComponent implements OnInit {
   cols!: unknown[];
   products!: ProductDto[];
   first = 0;
-  rows = 3;
+  rows = 5;
   rowsPerPageOptions = [3, 5, 10];
   totalRecords = 0;
   onlyMyItem = false;
